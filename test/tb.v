@@ -1,5 +1,5 @@
-`default_nettype none
-`timescale 1ns / 1ps
+`default_nettype none //Changes the default net type for implicit net declarations, which is typically set to wire.
+`timescale 1ns / 1ps //<time_unit>/<time_precision>
 
 /* This testbench just instantiates the module and makes some convenient wires
    that can be driven / tested by the cocotb test.py.
@@ -8,7 +8,7 @@ module tb ();
 
   // Dump the signals to a VCD file. You can view it with gtkwave or surfer.
   initial begin
-    $dumpfile("tb.vcd");
+    $dumpfile("test_result.vcd");
     $dumpvars(0, tb);
     #1;
   end
@@ -22,13 +22,15 @@ module tb ();
   wire [7:0] uo_out;
   wire [7:0] uio_out;
   wire [7:0] uio_oe;
+  
 `ifdef GL_TEST
   wire VPWR = 1'b1;
   wire VGND = 1'b0;
 `endif
 
   // Replace tt_um_example with your module name:
-  tt_um_example user_project (
+  // Syntax is "module-name instance-name"
+  tt_um_PWM_jmkr user_project(
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
@@ -36,7 +38,7 @@ module tb ();
       .VGND(VGND),
 `endif
 
-      .ui_in  (ui_in),    // Dedicated inputs
+      .ui_in  (ui_in),    // Dedicated inputs .port on design (wire to connect to)
       .uo_out (uo_out),   // Dedicated outputs
       .uio_in (uio_in),   // IOs: Input path
       .uio_out(uio_out),  // IOs: Output path
