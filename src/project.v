@@ -18,7 +18,7 @@ module tt_um_PWM_jmkr (
 );
 
 assign uio_oe  = 1; //birectional pins set to output
-Variable_PWM PWM_0(.Dutycycle(ui_in),.clk(clk), .reset(!rst_n), .counter(uo_out), .pwmout(unio_out[0]));
+Variable_PWM PWM_0(.Dutycycle(ui_in),.clk(clk), .reset(!rst_n), .counter(uo_out), .pwmout(uio_out[0]));
   // All output pins must be assigned. If not used, assign to 0.
   assign uio_out[7:1] = 0;
   
