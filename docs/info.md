@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This project implements a variable PWM generator, by setting the dutycycle on its input
 
 ## How to test
 
-Explain how to use your project
+Connect inputs to analog discovery digital I/O and set digital values representing the wanted dutycycle
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+Analog discovery
